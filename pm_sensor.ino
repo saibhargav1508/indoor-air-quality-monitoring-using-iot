@@ -4,14 +4,14 @@
 int pin = 14;
 unsigned long duration;
 unsigned long starttime;
-unsigned long sampletime_ms = 1000;//sampe 1s ;
+unsigned long sampletime_ms = 1000;//sample 1s ;
 unsigned long lowpulseoccupancy = 0;
 float ratio = 0;
 float concentration = 0;
 
 // WiFi parameters to be configured
-const char* ssid = "***"; // Write here your router's username
-const char* password = "***"; // Write here your router's passward
+const char* ssid = "***"; // Write here your router's SSID
+const char* password = "***"; // Write here your router's password
 
 #define SECRET_CH_ID 000     // replace 0000000 with your channel ID
 #define SECRET_WRITE_APIKEY "XYZ"   // replace XYZ with your channel write API Key
@@ -47,6 +47,7 @@ void loop() {
   lowpulseoccupancy = lowpulseoccupancy+duration;
   for(int i = 0; i<3; i++)
   {
+    // readings are mesaured from PM sensor using ratio of sample values
     if ((millis()-starttime) > sampletime_ms)//if the sampel time == 30s
     {
       ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=>100
@@ -74,9 +75,11 @@ void loop() {
     }
     Serial.println("Trying to write data to the cloud");
     Serial.println(concentration);
+    
     // Write value to Field 1 of a ThingSpeak Channel
     int httpCode = ThingSpeak.writeField(myChannelNumber, 1, String(concentration), myWriteAPIKey);
-  
+    
+    // receiving response from ThingSpeak to check if delivery of message was succesful
     if (httpCode == 200) {
         Serial.println("Channel write successful.");
       }
@@ -85,6 +88,7 @@ void loop() {
     }
     delay(20000);
   }
+  
   // puts the nodeMCU to deepsleep for 20 seconds
   ESP.deepSleep(20e6);
 }
