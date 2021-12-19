@@ -1,0 +1,19 @@
+ESP8266 tutorials: 
+https://nothans.com/thingspeak-tutorials/esp8266/building-the-internet-of-things-with-the-esp8266-wi-fi-module-and-thingspeak
+https://nothans.com/measure-wi-fi-signal-levels-with-the-esp8266-and-thingspeak
+
+PM sensor tutroials:
+https://forum.arduino.cc/t/esp8266-dust-sensor-ppd42/700860/19
+https://seeeddoc.github.io/Grove-Dust_Sensor/
+
+Network Implementation:
+https://www.instructables.com/WiFi-Communication-Between-Two-ESP8266-Based-MCU-T/
+https://www.mathworks.com/help/thingspeak/analyze-channel-data-to-send-email.html
+
+Activate sleep mode in ESP8266:
+https://www.electronicshub.org/esp8266-deep-sleep-mode/
+https://circuitdigest.com/microcontroller-projects/esp8266-deep-sleep-mode-programming-explanation
+https://randomnerdtutorials.com/esp8266-deep-sleep-with-arduino-ide/
+
+Trigerring email from ThingSpeak:
+https://community.thingspeak.com/documentation/apps/react/
